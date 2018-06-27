@@ -1,0 +1,16 @@
+#Java Reflection is a process of examining or modifying the run time behavior of a class at run time.
+
+getting instance of class
+1. forName() method of class Class
+    syntax:
+    Class c = Class.forName("packagename.Classname") // even both classes lie in same package
+                                                        should pass the fully-qualified name
+                                                        for the class (incl. packages)
+
+   It should be used only when qualified name of class is already known.
+2. getClass()
+    syntax:
+    Class c = Object.getClass(); //so euta class ko object pass garera instance create garna milcha and
+                                     used if you know the type.
+
+3.
