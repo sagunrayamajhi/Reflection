@@ -1,25 +1,39 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import java.io.*;
 
 /**
  * Created by srayamajhi on 10/9/17.
  */
 public class test {
-    public static void main(String[] args) {
-        String str = "a";
-//        str =str.trim();
-//        str =str.substring(0,str.length()-3);
-        System.out.println(str.toUpperCase());
-    }
-    public static String[] getUdfFields(){
-        ArrayList<String> list = new ArrayList<String>();
-        for(int i = 52 ; i <= 70 ; i++){
-            list.add("udf"+i);
-        }
-        for (int i = 101 ; i <= 112 ; i++){
-            list.add("udf"+i);
-        }
-        return list.toArray(new String[list.size()]);
+    public static void main(String[] args) throws IOException {
+        File in = new File("/home/srayamajhi/hash/input.txt");
+        File out = new File("/home/srayamajhi/hash/output.txt");
+        String salt ="";
+        String line;
+        BufferedReader input = null;
+        BufferedWriter output = null;
+        try{
+            input = new BufferedReader(new FileReader(in));
+            output = new BufferedWriter(new FileWriter(out));
+            while ((line = input.readLine()) != null ){
+                String key = "";
+                if(line.contains("|")){
+                    for (String str : line.split("|")){
+                        key = key+str.replace("-","");
+                    }
+                    output.write(key+"|"+DigestUtils.md5Hex(salt+key )+"\n");
 
+                    System.out.println(line);
+                }
+            }
+        }finally {
+            input.close();
+            output.close();
+        }
+    }
+
+    public String[] splitLines(String str, String delimeter){
+        return str.split(delimeter);
     }
 }
