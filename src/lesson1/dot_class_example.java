@@ -9,7 +9,7 @@ public class dot_class_example{
                 System.out.println("TEST");
         }
 }
-
+//yo ni paryo
 class test3 {
 
         public static void main(String[] args) {
