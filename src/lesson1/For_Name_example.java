@@ -9,7 +9,7 @@ class For_Name_example {
     }
 }
 //checking new branch push
-//yo pani jana paryo
+//yo pani
 class test{
     public static void main(String[] args) {
         try {
