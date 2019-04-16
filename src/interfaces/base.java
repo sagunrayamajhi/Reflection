@@ -5,4 +5,5 @@ package interfaces;
  */
 interface base {
     public void display();
+    public void getName();
 }
